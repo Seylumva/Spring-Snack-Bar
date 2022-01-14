@@ -1,0 +1,31 @@
+@use "sass:map";
+
+$colors: (
+  primary: (
+    lighter: hsl(0, 100%, 95%),
+    light: hsl(0, 100%, 85%),
+    default: hsl(0, 100%, 75%),
+    dark: hsl(0, 100%, 70%),
+    darker: hsl(0, 100%, 65%),
+  ),
+  gray: (
+    1000: #131313,
+    900: #1d1d21,
+    800: #2e2e31,
+    600: #7b7a7d,
+    400: #a5a5a6,
+    300: #bbbbbc,
+    200: #d1d0d2,
+    100: #e8e7e8,
+    0: #fff,
+  ),
+  feedback: (
+    success: #41ce5f,
+    error: #f53444,
+    warning: #ffd137,
+  ),
+);
+
+@function get-color($color, $value) {
+  @return map-get(map-get($colors, $color), $value);
+}

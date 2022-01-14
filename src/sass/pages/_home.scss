@@ -1,0 +1,183 @@
+@use "../abstracts";
+
+.home {
+  position: relative;
+
+  .container {
+    @include abstracts.container;
+  }
+}
+
+.hero__image {
+  height: calc(100vh - 65px);
+  position: relative;
+
+  img {
+    // max-width: unset;
+    object-fit: cover;
+    object-position: top;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (min-width: 1000px) {
+    height: 750px;
+
+    img {
+      object-position: 0 15%;
+    }
+  }
+}
+
+.hero__text {
+  position: absolute;
+  z-index: 1;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.7);
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  width: 260px;
+
+  h1 {
+    font: {
+      size: 35px;
+      weight: 700;
+    }
+    color: abstracts.get-color(primary, dark);
+    text-align: center;
+    line-height: 150%;
+  }
+
+  p {
+    display: inline-block;
+    font: {
+      size: 20px;
+      weight: 500;
+    }
+    padding: 1rem 1.5rem;
+    background: abstracts.get-color(primary, dark);
+    text-align: center;
+    color: abstracts.get-color(primary, lighter);
+  }
+}
+
+.coming-soon {
+  padding-top: 5rem;
+  background: rgba(abstracts.get-color(primary, lighter), 0.6);
+}
+
+.coming-soon__header {
+  h2 {
+    font-size: 2.4rem;
+    color: abstracts.get-color(primary, darker);
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 1.4rem;
+    color: abstracts.get-color(primary, default);
+  }
+
+  h2,
+  p {
+    text-align: center;
+  }
+}
+
+.coming-soon__arrivals {
+  margin-top: 3rem;
+}
+
+.coming-soon__arrivals {
+  @media (min-width: 1000px) {
+    display: flex;
+    justify-content: space-around;
+
+    h3,
+    ul {
+      text-align: center;
+      width: 300px;
+    }
+  }
+
+  h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: abstracts.get-color(primary, dark);
+  }
+
+  ul {
+    padding-bottom: 5rem;
+  }
+}
+
+.arrivals__list__item {
+  font-size: 1.4rem;
+  color: abstracts.get-color(primary, default);
+
+  &:not(:last-of-type) {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.notify {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding-block: 5rem;
+  background: rgba(abstracts.get-color(primary, default), 0.8);
+
+  &__header {
+    text-align: center;
+    margin-bottom: 1rem;
+
+    h2 {
+      font-size: 2.4rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1.4rem;
+      color: #fff;
+    }
+  }
+
+  &__form {
+    display: flex;
+
+    input,
+    button {
+      padding: 1.25rem;
+      border: none;
+    }
+
+    input {
+      color: #ff6666;
+      width: 300px;
+      font-size: 1.6rem;
+      font-weight: 600;
+      border-radius: 3px 0 0 3px;
+      &:focus {
+        outline: none;
+      }
+    }
+
+    button {
+      cursor: pointer;
+      background: abstracts.get-color(primary, dark);
+      color: abstracts.get-color(gray, 0);
+      font-weight: 700;
+      border-radius: 0 3px 3px 0;
+      font-size: 1.6rem;
+    }
+  }
+}

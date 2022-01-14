@@ -1,0 +1,114 @@
+@use "../abstracts";
+
+.navbar {
+  padding: 1rem;
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+
+  & .container {
+    @include abstracts.container;
+    @include abstracts.row;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__logo {
+    max-width: 45px;
+  }
+
+  &__title {
+    font: {
+      family: "Cormorant Upright", sans-serif;
+      size: 2.5rem;
+      weight: 700;
+    }
+    color: abstracts.get-color(primary, default);
+  }
+
+  &__toggle {
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    display: grid;
+    place-items: center;
+    background: none;
+    border: none;
+  }
+
+  &__hamburger {
+    width: 25px;
+    height: 3px;
+    background: abstracts.get-color(primary, darker);
+    position: relative;
+  }
+
+  &__hamburger::before,
+  &__hamburger::after {
+    content: "";
+    position: absolute;
+    background: abstracts.get-color(primary, darker);
+    width: 100%;
+    height: 3px;
+    left: 0;
+    top: 0;
+  }
+
+  &__hamburger::before {
+    transform: translateY(-8px);
+  }
+
+  &__hamburger::after {
+    transform: translateY(8px);
+  }
+
+  &__links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    overflow: hidden;
+    max-height: 0;
+    background: abstracts.get-color(primary, lighter);
+    transition: max-height 350ms ease-in-out;
+
+    li {
+      width: 100%;
+    }
+
+    .container {
+      @include abstracts.container;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__links--visible {
+    max-height: 100vh;
+  }
+
+  &__link {
+    display: inline-block;
+    font: {
+      size: 1.6rem;
+      weight: 400;
+    }
+
+    color: abstracts.get-color(primary, darker);
+    padding: 1.5rem 0;
+    width: 100%;
+    height: 100%;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
